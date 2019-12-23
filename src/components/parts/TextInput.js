@@ -5,8 +5,8 @@ const TextInput = props => (
         {props.inputLabel}
         <input
             type="text"
+            name={props.inputName}
             value={props.inputVal}
-            ref={props.inputRef}
             placeholder={props.inputPlaceholder}
         />
     </label>
