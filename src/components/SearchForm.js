@@ -7,7 +7,7 @@ import orgData from '../data/organizations.json';
 import ticketData from '../data/tickets.json';
 
 function ErrorDisplay(props) {
-  if (!props.validation && !props.empty) {
+  if (!props.emptyResult) {
     return null;
   }
 
@@ -45,7 +45,6 @@ class SearchForm extends React.Component {
 
     this.state = {
         mockData: mockData,
-        inputCount: 0,
         inputStates: [],
         emptyResult: false,
         results: [],
@@ -125,7 +124,7 @@ class SearchForm extends React.Component {
     const targetInput = event.target;
     const updatedStates = this.state.inputStates;
     // this identity will be the field name and input group index
-    const inputIdentity = targetInput.id.split('_');
+    const inputIdentity = targetInput.name.split('_');
     const isCheckbox = (targetInput.type === 'checkbox');
 
     // lets check if the available fields need to be updated
@@ -141,8 +140,6 @@ class SearchForm extends React.Component {
       newInput[inputIdentity[0]] = isCheckbox ? targetInput.checked : targetInput.value;
       updatedStates[inputIdentity[1]] = newInput;
     }
-
-    console.log(updatedStates);
 
     this.setState({
         inputStates: updatedStates
@@ -168,7 +165,7 @@ class SearchForm extends React.Component {
   render() {
     return (
       <div className="search-form">
-        <ErrorDisplay empty={this.state.emptyResult} />
+        <ErrorDisplay emptyResult={this.state.emptyResult} />
         <h4>Please enter search criteria</h4>
         <form onSubmit={this.handleSubmit}>
           {this.state.inputStates.map((inputGroup, index) => 
@@ -179,7 +176,7 @@ class SearchForm extends React.Component {
                                                       key={index} />
                                                     )}
           <div className="form-group">
-              <input type="submit" value="Search" />
+              <input className="submit-button" type="submit" value="Search" />
           </div>
         </form>
         <SearchResultSummary data={this.state.results} />
