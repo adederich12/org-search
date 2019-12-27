@@ -64,7 +64,7 @@ const ResultItem = props => (
       </div>
       <OrganizationInfo {...props.organization} />
       <div className="tags">
-        {props.tags.map((tag, index) => <b key={index}>{tag} </b>)}
+        Tags: {props.tags.map((tag, index) => <b key={index}>{tag} </b>)}
       </div>
     </div>
 );

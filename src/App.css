@@ -2,20 +2,9 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +13,133 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.alert-danger {
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-form {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-result {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-summary {
+  text-align: right;
+  margin: 10px 0px;
+}
+
+.search-result-item {
+  position: relative;
+  display: block;
+  border: 1px solid gray;
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: -1px;
+  height: 300px;
+}
+
+.search-result-item .created-div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-block;
+  text-align: left;
+}
+
+.search-result-item .submitted-div {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-block;
+  text-align: right;
+}
+
+.search-result-item .assignee-div {
+  position: absolute;
+  top: 55px;
+  right: 10px;
+  display: inline-block;
+  text-align: right;
+}
+
+.search-result-item .type-div {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  display: inline-block;
+  text-align: left;
+}
+
+.search-result-item .subject-div {
+  position: absolute;
+  top: 70px;
+  left: 10px;
+  display: inline-block;
+  text-align: left;
+}
+
+.search-result-item .description-div {
+  position: absolute;
+  top: 125px;
+  left: 10px;
+  height: 95px;
+  width: 688px;
+  overflow-y: scroll;
+  display: inline-block;
+  text-align: left;
+}
+
+.search-result-item .priority-div {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  display: inline-block;
+  text-align: left;
+}
+
+.search-result-item .status-div {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: inline-block;
+  text-align: right;
+}
+
+.search-result-item .organization-div {
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  display: inline-block;
+  text-align: left;
+}
+
+.search-result-item .tags {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: inline-block;
+  text-align: left;
+}
+
+.tags b {
+  background-color: lightblue;
+  margin: 0px 5px;
+  padding: 0px 5px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+.form-group input, .form-group select {
+  margin: 20px;
+}
+
+.form-group input.search-empty {
+  margin-right: 5px;
 }

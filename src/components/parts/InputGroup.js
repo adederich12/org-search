@@ -12,8 +12,8 @@ function InputGroup(props) {
                 {props.availableFields.map((field, key) => <option value={field} key={key}>{field}</option>)}
             </select> =>
             <input type="text" className="search-query" name={"searchQuery_"+props.inputIndex} placeholder={"Search by "+props.searchField} value={props.searchValue} onChange={props.changeFunc} />
-            Empty field?
             <input type="checkbox" className="search-empty" name={"searchEmpty_"+props.inputIndex} checked={props.searchEmpty} onChange={props.changeFunc} />
+            Empty field?
         </div>
     );
 }

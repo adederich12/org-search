@@ -93,6 +93,7 @@ class SearchForm extends React.Component {
 
     this.state.inputStates.forEach(searchCondition => {
       const emptySearch = searchCondition.searchEmpty;
+      const queryTerm = searchCondition.searchQuery.toLowerCase();
       
       // run through the search criteria and filter out the list of results
       resultSet = _.filter(resultSet, function(resultItem) {
@@ -101,15 +102,15 @@ class SearchForm extends React.Component {
             if (emptySearch) {
               return resultItem[searchCondition.searchField] === "" || resultItem[searchCondition.searchField] === undefined;
             }
-            return resultItem[searchCondition.searchField].toLowerCase().startsWith(searchCondition.searchQuery);
+            return resultItem[searchCondition.searchField].toLowerCase().startsWith(queryTerm);
           case 'user':
             // yuck, this is a bit longer than i'd like
-            let subMatch = resultItem.submitter && resultItem.submitter[searchCondition.searchField].toLowerCase().startsWith(searchCondition.searchQuery);
+            let subMatch = resultItem.submitter && resultItem.submitter[searchCondition.searchField].toLowerCase().startsWith(queryTerm);
             // haha
-            let assMatch = resultItem.assignee && resultItem.assignee[searchCondition.searchField].toLowerCase().startsWith(searchCondition.searchQuery);
+            let assMatch = resultItem.assignee && resultItem.assignee[searchCondition.searchField].toLowerCase().startsWith(queryTerm);
             return subMatch || assMatch;
           case 'organization':
-            let orgMatch = resultItem.organization && resultItem.organization[searchCondition.searchField].toLowerCase().startsWith(searchCondition.searchQuery);
+            let orgMatch = resultItem.organization && resultItem.organization[searchCondition.searchField].toLowerCase().startsWith(queryTerm);
             return orgMatch;
           default: 
             return false;
@@ -175,9 +176,7 @@ class SearchForm extends React.Component {
                                                       inputIndex={index}
                                                       key={index} />
                                                     )}
-          <div className="form-group">
-              <input className="submit-button" type="submit" value="Search" />
-          </div>
+            <input className="submit-button" type="submit" value="Search" />
         </form>
         <SearchResultSummary data={this.state.results} />
         <div className="search-result">
